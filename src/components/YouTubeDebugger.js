@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-export default class YouTubeDebugger extends React.Component {
+export default class YouTubeDebugger extends Component {
   constructor() {
     super()
 
@@ -19,7 +19,7 @@ export default class YouTubeDebugger extends React.Component {
   bitrateClick = () => {
     this.setState({
       settings: {
-        ...this.settings,
+        ...this.state.settings,
         bitrate: 12
       }
     })
@@ -28,9 +28,9 @@ export default class YouTubeDebugger extends React.Component {
   resolutionClick = () => {
     this.setState({
       settings: {
-        ...this.settings,
+        ...this.state.settings,
         video: {
-          ...this.settings.video,
+          ...this.state.settings.video,
           resolution: '720p'
         }
       }
@@ -40,8 +40,8 @@ export default class YouTubeDebugger extends React.Component {
   render() {
     return(
       <div>
-        <button class="bitrate" onClick={this.bitrateClick}></button>
-        <button class="resolution" onClick={this.resolutionClick}></button>
+        <button className="bitrate" onClick={this.bitrateClick}></button>
+        <button className="resolution" onClick={this.resolutionClick}>{this.state.settings.video.resolution}</button>
       </div>
   )}
 }
